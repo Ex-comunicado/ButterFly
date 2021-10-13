@@ -1,0 +1,51 @@
+{% extends 'basetemp.html' %}
+{% block title %}
+    Registration Page
+{% endblock %}
+{% block body %}
+<form method="POST" class="form-register">
+    {{ form.hidden_tag() }}
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+                        <div class="mb-md-0 mt-md-0 pb-0">
+                            <h2 class="fw-bold mb-2 text-uppercase">Register yourself</h2>
+                            <p class="text-white-50 mb-3">Please enter your details</p>
+                            <div class="card-columns mb-2">
+                                <div class="card bg-success">
+                                  <div class="card-body text-start">
+                                        <p class="card-text">* Username should be between 2 and 30 characters</p>
+                                        <p class="card-text">* E-mail address should be of proper format, i.e. xyz@abc.com</p>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="form-outline form-white mb-4">
+                                {{ form.username.label() }}
+                                {{ form.username(class="form-control", placeholder="Enter username") }}
+                            </div>
+                            <div class="form-outline form-white mb-4">
+                                {{ form.email_addr.label() }}
+                                {{ form.email_addr(class="form-control", placeholder="Enter e-mail address") }}
+                            </div>
+                            <div class="form-outline form-white mb-4">
+                                {{ form.password1.label() }}
+                                {{ form.password1(class="form-control", placeholder="Enter password") }}
+                            </div>
+                            <div class="form-outline form-white mb-4">
+                                {{ form.password2.label() }}
+                                {{ form.password2(class="form-control", placeholder="Re-enter password") }}
+                            </div>
+                            {{ form.submit(class="btn btn-primary") }}
+                            <br><br>
+                        </form>
+                            Already have an account?
+                            <a class="btn btn-sm btn-secondary" href="{{ url_for('login') }}">Sign in Here</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
