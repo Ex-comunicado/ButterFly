@@ -7,7 +7,11 @@
 <div class="position-relative overflow-hidden text-center" style="color:white">
     <br><br><br><br><br><br><br><br><br><br><br><br>
     <h1>ButterFly Vulnerable Web Application</h1>
+    {% if current_user.is_authenticated %}
+        <p class="lead font-weight-normal">Welcome hacker. Stay vigilant and cover your tracks.</p>
+    {% else %}
         <p class="lead font-weight-normal">Take the first step to becoming a hacker by clicking on the button below</p>
     <a class="btn btn-primary" href="{{url_for('register')}}">Get Started</a>
+  {% endif %}
 </div>
 {% endblock %}
