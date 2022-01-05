@@ -1,0 +1,39 @@
+{% extends 'basetemp.html' %}
+{% block title %}
+    SQL Injection
+{% endblock %}
+{% block body %}
+<form method="POST" class="form-register">
+    {{ form.hidden_tag() }}    
+    <div class="position-relative overflow-hidden" style="color:white">
+    <h1>SQL Injection</h1>
+    Every WebApp has a back-end database to store information. For the WebApp to perform operations such as signing up, logging in, showing stored information to user the back-end database comes into use. When the user is allowed to provide input and it makes the Web-App interact with that back-end database. If proper measures are not taken, the user’s input can affect the back-end database because a malicious user can modify the query running to either gain access, gain sensitive information, or modify/delete values in the database. SQL Injection is the attack that enables an attacker to inject SQL query into the code, modifying the operation of the intended query.
+    One type of SQL Injection vulnerabilities is Blind SQLi – This type of vulnerability arises when the application shows generic error messages that do not indicate an SQLi vulnerability but the vulnerability exists nevertheless and can be exploited by asking the database true/false questions and determine the answer based on the application’s response. The types of SQLi attack are: Time-based and Boolean-based.
+    <br><br><br>
+    <h1>Practical Lab</h1>
+    Enter ID of a user to check Username corresponding to that ID.<br><br>
+        <div class="form-outline form-white mb-4">
+        {{ form.id.label() }}
+        {{ form.id(class="form-control", placeholder="Enter ID") }}
+        </div>
+        {{ form.submit(class="btn btn-primary") }}
+        <br><br>
+    {% if ID %}
+        ID: {{ ID }}<br>
+        Username: {{ account }}
+    {% endif %}
+    <br><br>
+    <h1>Preventing SQLi</h1>
+    <ul>
+        <li>Use prepared statements with parameterized queries.</li>
+        <li>User supplied input validation.</li>
+        <li>The principle of least privilege.</li>
+        <li>Web Application Firewall.</li>
+    </ul>
+</div>
+</form>
+
+
+
+
+{% endblock %}

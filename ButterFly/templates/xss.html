@@ -1,0 +1,36 @@
+{% extends 'basetemp.html' %}
+{% block title %}
+    Cross Site Scripting
+{% endblock %}
+{% block body %}
+<form method="POST" class="form-register">
+    {{ form.hidden_tag() }}    
+    <div class="position-relative overflow-hidden" style="color:white">
+    <h1>Cross Site Scripting (XSS)</h1>
+    XSS vulnerability occurs whenever an application includes user supplied data into a new web page without proper escaping or validation or updates the existing web page with the input. XSS allows attackers to execute scripts on a victim’s browser taking over their session, deface websites or redirect the user to a malicious site.
+    There are 3 types of XSS attacks:
+<ul><li>Reflected XSS: The malicious script (JavaScript code) comes from the current HTTP request and the application includes that data in the immediate response in an unsafe manner.</li>
+<li>Stored XSS: The malicious script in an HTTP request is included in further HTTP responses in an unsafe way. The script is stored in the application’s database and is therefore run every time that particular resource is accessed. For e.g., a comment on a website.</li>
+<li>DOM based XSS.</li></ul>
+    <br><br><br>
+    <h1>Practical Lab</h1>
+    What is your name?<br><br>
+        <div class="form-outline form-white mb-4">
+        {{ form.name.label() }}
+        {{ form.name(class="form-control", placeholder="Enter Name") }}
+        </div>
+        {{ form.submit(class="btn btn-primary") }}
+        <br><br>
+        {% if name %}
+        Hello {{ name | safe}}, Welcome to ButterFly Vulnerable Web Application.
+        {% endif %}
+    <br><br>
+    <h1>Preventing XSS</h1>
+    <ul>
+        <li>Filter data on arrival.</li>
+        <li>Encode data on output.</li>
+        <li>Use appropriate response headers. To prevent XSS in HTTP responses that aren't intended to contain any HTML or JavaScript, you can use the Content-Type and X-Content-Type-Options headers to ensure that browsers interpret the responses in the way you intend.</li>
+    </ul>
+</div>
+</form>
+{% endblock %}

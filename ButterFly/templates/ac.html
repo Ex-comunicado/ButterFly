@@ -1,0 +1,43 @@
+{% extends 'basetemp.html' %}
+{% block title %}
+    Broken Access Controls
+{% endblock %}
+{% block body %}
+<form method="POST" class="form-register">    
+    <div class="position-relative overflow-hidden" style="color:white">
+    <h1>Broken Access Controls</h1>
+    Restrictions are implemented in every system deciding what actions different authenticated users are authorized to perform. Any flaws in these restrictions/controls that can be exploited/abused by an unauthorized user to perform an action that they are not authorized to perform constitute Broken Access Controls attacks. Some of these attacks are: accessing other users’ accounts, modify other users’ data, change access rights, view sensitive files, etc. Privilege Escalation is a major impact of this kind of vulnerabilities. Broken Access Controls can lead to horizontal and vertical privilege escalation.
+    <br><br><br>
+    <h1>Practical Lab</h1>
+    If you have accessed this table without having proper authorization, you have solved this lab.<br><br>
+    <p>Your role is <span style="color:green">{{ session['role'] }}</span></p>
+    <p>This website has the following users:</p>
+        <table class="table" style="color: white;">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Username</th>
+                <th scope="col">Password hash</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for deet in deets %}
+                    <tr>
+                        {% for d in deet %}
+                        <td>{{ d }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    <br><br>
+    <h1>Preventing Broken Access Controls</h1>
+    <ul>
+        <li>Unless a resource is required to be publically accessible by default, deny access by default.</li>
+        <li>Use ACLs and role based access.</li>
+        <li>Test Access Controls critically.</li>
+    </ul>
+</div>
+</form>
+{% endblock %}

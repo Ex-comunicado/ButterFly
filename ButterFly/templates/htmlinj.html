@@ -1,0 +1,35 @@
+{% extends 'basetemp.html' %}
+{% block title %}
+    HTML Injection
+{% endblock %}
+{% block body %}
+<form method="POST" class="form-register">
+    {{ form.hidden_tag() }}    
+    <div class="position-relative overflow-hidden" style="color:white">
+    <h1>HTML Injection</h1>
+    HTML injection is a type of injection vulnerability that occurs when a user is able to control an input point and is able to inject arbitrary HTML code into a vulnerable web page. This vulnerability can have many consequences, like disclosure of a user’s session cookies that could be used to impersonate the victim, or, more generally, it can allow the attacker to modify the page content seen by the victims.
+
+This vulnerability occurs when user input is not correctly sanitized and the output is not encoded. An injection allows the attacker to send a malicious HTML page to a victim. The targeted browser will not be able to distinguish (trust) legitimate parts from malicious parts of the page, and consequently will parse and execute the whole page in the victim’s context.
+    <br><br><br>
+    <h1>Practical Lab</h1>
+    What is your name?<br><br>
+        <div class="form-outline form-white mb-4">
+        {{ form.name.label() }}
+        {{ form.name(class="form-control", placeholder="Enter Name") }}
+        </div>
+        {{ form.submit(class="btn btn-primary") }}
+        <br><br>
+        {% if name %}
+        Hello {{ name | safe}}, Welcome to ButterFly Vulnerable Web Application.
+        {% endif %}
+    <br><br>
+    <h1>Preventing HTML Injection</h1>
+    <ul>
+        <li>Every input should be checked if it contains any script code or any HTML code. Usually it is being checked, if the code contains any special script or HTML brackets – script /script, html /html.</li>
+        <li>There are many functions for checking if the code contains any special brackets. Selection of checking function depends on the programming language, that you are using.</li>
+        <li>It should be remembered, that good security testing is also a part of prevention. I would like to pay attention, that as HTML Injection attack is very rare, there is less literature to learn about it and less scanner to select for automatic testing. However, this part of security testing really should not be missed, as you never know when it may happen.</li>
+        <li>Also, both the developer and tester should have good knowledge of how this attack is being performed. Good understanding of this attack process may help to prevent it.</li>
+    </ul>
+</div>
+</form>
+{% endblock %}

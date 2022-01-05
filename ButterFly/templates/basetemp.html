@@ -35,12 +35,11 @@
               <div class="dropdown">
                 <a class="nav-link text-light dropdown-toggle" href="{{ url_for('vuln_page') }}" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Vulnerabilities</a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">SQL Injection</a>
-                  <a class="dropdown-item" href="#">Reflected Cross Site Scripting (XSS)</a>
-                  <a class="dropdown-item" href="#">Broken Access Controls</a>
-                  <a class="dropdown-item" href="#">HTML Injection</a>
-                  <a class="dropdown-item" href="#">OS Command Injection</a>
-                  <a class="dropdown-item" href="#">Stored Cross Site Scripting (XSS)</a>
+                  <a class="dropdown-item" href="{{ url_for('sqli') }}">SQL Injection</a>
+                  <a class="dropdown-item" href="{{ url_for('xss') }}">Reflected Cross Site Scripting (XSS)</a>
+                  <a class="dropdown-item" href="{{url_for('ac')}}">Broken Access Controls</a>
+                  <a class="dropdown-item" href="{{ url_for('htmlinj') }}">HTML Injection</a>
+                  <a class="dropdown-item" href="{{ url_for('cominj') }}">OS Command Injection</a>
                 </div>
               </div>
               
@@ -54,7 +53,7 @@
             <ul class="navbar-nav">
                 {% if current_user.is_authenticated %}
                 <li class="nav-item">
-                  <a class="nav-link">Welcome, {{ current_user.username }}</a>
+                  <a class="nav-link" style="color: white;">Welcome, {{ current_user.username }}</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link text-light" href="{{url_for('logout_page')}}">Logout</a>

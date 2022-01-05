@@ -1,0 +1,33 @@
+{% extends 'basetemp.html' %}
+{% block title %}
+    OS Command Injection
+{% endblock %}
+{% block body %}
+<form method="POST" class="form-register">
+    {{ form.hidden_tag() }}    
+    <div class="position-relative overflow-hidden" style="color:white">
+    <h1>OS Command Injection</h1>
+    Command Injection is a vulnerability that allows an attacker to run arbitrary commands on the host OS of the web application and essentially compromise the whole system. Any parameter that accepts input and runs commands on the server can be vulnerable to this type of attack if the input is not sanitized appropriately.
+This type of vulnerability can be checked for by separating intended and malicious commands by shell such as &, &&, |, ||, ;, newline character. Malicious commands may differ based on what OS resides in the back-end.
+    <br><br><br>
+    <h1>Practical Lab</h1>
+    Enter a Domain Name or IP Address to perform DNS lookup or Reverse DNS Lookup on.<br><br>
+        <div class="form-outline form-white mb-4">
+        {{ form.ipaddr.label() }}
+        {{ form.ipaddr(class="form-control", placeholder="Enter Value") }}
+        </div>
+        {{ form.submit(class="btn btn-primary") }}
+    <br><br>
+    {% if ipaddr %}
+        {{ result }}
+    {% endif %}
+    <br><br>
+    <h1>Preventing OS Command Injection</h1>
+    <ul>
+        <li>Don't use OS commands where user can supply input.</li>
+        <li>If previous point unavoidable, sanitize user input by implementing a whitelist of permitted values.</li>
+        <li>Reduce the acceptable input character-set to a very narrow value, such as only alphanumeric characters so that any meta-characters or whitespaces are not accepted as input.</li>
+    </ul>
+</div>
+</form>
+{% endblock %}

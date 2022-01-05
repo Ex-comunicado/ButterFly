@@ -14,7 +14,7 @@
       <div class="card-body">
         <h5 class="card-title">SQL Injection</h5>
         <p class="card-text">SQL injection is a code injection technique used to attack data-driven applications, in which malicious SQL statements are inserted into an entry field for execution.</p>
-        <a href="#" class="btn btn-primary">Hack!</a>
+        <a href="{{ url_for('sqli') }}" class="btn btn-primary">Hack!</a>
       </div>
     </div>
   </div>
@@ -23,7 +23,7 @@
       <div class="card-body">
         <h5 class="card-title">Reflected Cross Site Scripting (XSS))</h5>
         <p class="card-text">Reflected XSS attacks, also known as non-persistent attacks, occur when a malicious script is reflected off of a web application to the victim's browser.</p>
-        <a href="#" class="btn btn-primary">Hack!</a>
+        <a href="{{ url_for('xss') }}" class="btn btn-primary">Hack!</a>
       </div>
     </div>
   </div>
@@ -32,7 +32,7 @@
       <div class="card-body">
         <h5 class="card-title">Broken Access Controls</h5>
         <p class="card-text">Misconfigured functionality or mechanism that allows users to access content they are not authorized can make this type of vulnerability arise.</p>
-        <a href="#" class="btn btn-primary">Hack!</a>
+        <a href="{{url_for('ac')}}" class="btn btn-primary">Hack!</a>
       </div>
     </div>
   </div>
@@ -41,7 +41,7 @@
       <div class="card-body">
         <h5 class="card-title">HTML Injection</h5>
         <p class="card-text">HTML injection is a type of injection vulnerability that occurs when a user is able to control an input point and is able to inject arbitrary HTML code into a vulnerable web page.</p>
-        <a href="#" class="btn btn-primary">Hack!</a>
+        <a href="{{ url_for('htmlinj') }}" class="btn btn-primary">Hack!</a>
       </div>
     </div>
   </div>
@@ -50,16 +50,7 @@
       <div class="card-body">
         <h5 class="card-title">OS Command Injection</h5>
         <p class="card-text">OS command injection (also known as shell injection) is a web security vulnerability that allows an attacker to execute arbitrary operating system (OS) commands on the server that is running an application, and typically fully compromise the application and all its data.</p>
-        <a href="#" class="btn btn-primary">Hack!</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Stored Cross Site Scripting (XSS)</h5>
-        <p class="card-text">Stored XSS vulnerability occurs when a malicious script is injected directly into a vulnerable web application.</p>
-        <a href="#" class="btn btn-primary">Hack!</a>
+        <a href="{{ url_for('cominj') }}" class="btn btn-primary">Hack!</a>
       </div>
     </div>
   </div>
